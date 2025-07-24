@@ -102,10 +102,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { store } from 'src/store.js'
 
 const router = useRouter()
+const route = useRoute()
 const pointsEarned = ref(100) // Fixed points for completing a lesson
 
 const motivationalMessages = [
@@ -117,6 +118,12 @@ const motivationalMessages = [
 ]
 
 onMounted(() => {
+  // Complete the lesson when the page loads
+  const lessonId = route.params.lessonId
+  if (lessonId) {
+    store.completeLesson(lessonId, pointsEarned.value)
+  }
+  
   // Add some confetti animation delay
   setTimeout(() => {
     // Could add sound effects here in a real app

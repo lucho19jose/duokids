@@ -94,9 +94,9 @@ function handleAnswerSelected(option) {
 
 function handleContinue() {
   if (store.isLastQuestion()) {
-    // Complete the lesson and go to success page
-    store.completeLesson()
-    router.push('/success')
+    // Go to success page with lessonId (don't complete lesson here, do it in SuccessPage)
+    const lessonId = route.params.lessonId
+    router.push(`/success/${lessonId}`)
   } else {
     // Go to next question
     store.nextQuestion()

@@ -18,11 +18,42 @@
         </div>
         
         <h4 class="text-h4 text-weight-bold text-grey-8 q-ma-none q-mb-sm">
-          Leo García
+          {{ store.currentUser?.username || 'Usuario' }}
         </h4>
         <p class="text-body1 text-grey-6 q-ma-none">
           Estudiante Estrella ⭐
         </p>
+      </div>
+
+      <!-- User Info Card -->
+      <div class="user-info-section q-mb-xl">
+        <q-card class="user-info-card">
+          <q-card-section class="q-pa-lg">
+            <div class="row items-center justify-between">
+              <div class="col">
+                <h6 class="text-h6 text-weight-bold text-grey-8 q-ma-none q-mb-sm">
+                  Información de Usuario
+                </h6>
+                <p class="text-body2 text-grey-6 q-ma-none q-mb-sm">
+                  {{ store.currentUser?.email }}
+                </p>
+                <p class="text-caption text-grey-5 q-ma-none">
+                  Miembro desde hoy
+                </p>
+              </div>
+              <div class="col-auto">
+                <q-btn
+                  label="Cerrar Sesión"
+                  color="negative"
+                  outline
+                  rounded
+                  @click="handleLogout"
+                  no-caps
+                />
+              </div>
+            </div>
+          </q-card-section>
+        </q-card>
       </div>
 
       <!-- Stats Cards -->
@@ -158,7 +189,10 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { store } from 'src/store.js'
+
+const router = useRouter()
 
 const userLevel = computed(() => {
   return Math.floor(store.score / 100) + 1
@@ -171,6 +205,11 @@ const overallProgress = computed(() => {
 const learningStreak = computed(() => {
   return store.completedLessons.length > 0 ? store.completedLessons.length : 1
 })
+
+function handleLogout() {
+  store.logout()
+  router.push('/login')
+}
 
 const achievements = computed(() => [
   {
@@ -242,6 +281,12 @@ const achievements = computed(() => [
 .level-badge {
   font-size: 11px;
   padding: 4px 8px;
+}
+
+.user-info-card {
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card {

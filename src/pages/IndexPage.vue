@@ -9,7 +9,7 @@
           </q-avatar>
         </div>
         <h4 class="text-h4 text-weight-bold text-grey-8 q-ma-none q-mb-sm">
-          ¡Hola, Leo! 👋
+          ¡Hola, {{ store.currentUser?.username || 'Usuario' }}! 👋
         </h4>
         <p class="text-body1 text-grey-6 q-ma-none">
           ¿Listo para aprender {{ store.subject }}?
