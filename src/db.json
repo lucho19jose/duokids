@@ -1,0 +1,114 @@
+{
+  "subject": "Razonamiento Verbal",
+  "lessons": [
+    {
+      "id": "synonyms-1",
+      "title": "Sinónimos Fáciles",
+      "icon": "emoji_emotions",
+      "description": "Encuentra la palabra que significa lo mismo.",
+      "quizzes": [
+        {
+          "id": "q1",
+          "type": "multiple-choice",
+          "questionText": "¿Cuál palabra es un sinónimo de 'feliz'?",
+          "image": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=400&h=300&fit=crop&crop=face",
+          "options": [
+            { "text": "Triste", "isCorrect": false },
+            { "text": "Contento", "isCorrect": true },
+            { "text": "Enojado", "isCorrect": false },
+            { "text": "Cansado", "isCorrect": false }
+          ],
+          "feedback": "¡Correcto! 'Contento' y 'Feliz' significan casi lo mismo."
+        },
+        {
+          "id": "q2",
+          "type": "multiple-choice",
+          "questionText": "¿Cuál palabra es un sinónimo de 'grande'?",
+          "options": [
+            { "text": "Pequeño", "isCorrect": false },
+            { "text": "Rápido", "isCorrect": false },
+            { "text": "Enorme", "isCorrect": true },
+            { "text": "Bonito", "isCorrect": false }
+          ],
+          "feedback": "¡Así es! 'Enorme' es una forma de decir 'grande'."
+        },
+        {
+          "id": "q3",
+          "type": "multiple-choice",
+          "questionText": "¿Cuál palabra es un sinónimo de 'bonito'?",
+          "options": [
+            { "text": "Feo", "isCorrect": false },
+            { "text": "Hermoso", "isCorrect": true },
+            { "text": "Malo", "isCorrect": false },
+            { "text": "Sucio", "isCorrect": false }
+          ],
+          "feedback": "¡Excelente! 'Hermoso' significa lo mismo que 'bonito'."
+        }
+      ]
+    },
+    {
+      "id": "antonyms-1",
+      "title": "Antónimos Divertidos",
+      "icon": "sentiment_very_dissatisfied",
+      "description": "Encuentra la palabra que significa lo opuesto.",
+      "quizzes": [
+        {
+          "id": "q1",
+          "type": "multiple-choice",
+          "questionText": "¿Cuál palabra es lo opuesto de 'caliente'?",
+          "options": [
+            { "text": "Tibio", "isCorrect": false },
+            { "text": "Frío", "isCorrect": true },
+            { "text": "Seco", "isCorrect": false },
+            { "text": "Húmedo", "isCorrect": false }
+          ],
+          "feedback": "¡Perfecto! 'Frío' es lo opuesto de 'caliente'."
+        },
+        {
+          "id": "q2",
+          "type": "multiple-choice",
+          "questionText": "¿Cuál palabra es lo opuesto de 'alto'?",
+          "options": [
+            { "text": "Gordo", "isCorrect": false },
+            { "text": "Flaco", "isCorrect": false },
+            { "text": "Bajo", "isCorrect": true },
+            { "text": "Rápido", "isCorrect": false }
+          ],
+          "feedback": "¡Muy bien! 'Bajo' es lo contrario de 'alto'."
+        }
+      ]
+    },
+    {
+      "id": "analogies-1",
+      "title": "Analogías Simples",
+      "icon": "lightbulb",
+      "description": "Completa la relación entre las palabras.",
+      "quizzes": [
+        {
+          "id": "q1",
+          "type": "multiple-choice",
+          "questionText": "Perro es a ladrar como gato es a...",
+          "options": [
+            { "text": "Correr", "isCorrect": false },
+            { "text": "Maullar", "isCorrect": true },
+            { "text": "Dormir", "isCorrect": false },
+            { "text": "Saltar", "isCorrect": false }
+          ],
+          "feedback": "¡Genial! Los gatos maullan como los perros ladran."
+        },
+        {
+          "id": "q2",
+          "type": "multiple-choice",
+          "questionText": "Día es a sol como noche es a...",
+          "options": [
+            { "text": "Estrella", "isCorrect": false },
+            { "text": "Luna", "isCorrect": true },
+            { "text": "Nube", "isCorrect": false },
+            { "text": "Viento", "isCorrect": false }
+          ],
+          "feedback": "¡Correcto! La luna ilumina la noche como el sol ilumina el día."
+        }
+      ]
+    }
+  ]
+}

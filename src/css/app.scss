@@ -1,1 +1,102 @@
 // app global css in SCSS form
+
+// DuoKids Global Styles
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --duokids-primary: #58cc02;
+  --duokids-secondary: #ff9800;
+  --duokids-success: #4CAF50;
+  --duokids-error: #ff4b4b;
+  --duokids-background: #f5f7fa;
+}
+
+// Typography
+.q-app {
+  font-family: 'Nunito', 'Roboto', '-apple-system', 'Helvetica Neue', sans-serif;
+}
+
+// Make buttons more rounded and friendly
+.q-btn {
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+// Enhance cards with better shadows and rounded corners
+.q-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+// Smooth transitions for interactive elements
+.q-btn,
+.q-card,
+.q-item {
+  transition: all 0.3s ease;
+}
+
+// Custom utility classes
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--duokids-primary), var(--duokids-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Animation utilities
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.bounce-in {
+  animation: bounce-in 0.6s ease;
+}
+
+.slide-in {
+  animation: slide-in 0.4s ease;
+}
+
+// Make scrollbars prettier
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--duokids-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4db300;
+}

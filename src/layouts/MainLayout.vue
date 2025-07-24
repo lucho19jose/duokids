@@ -1,102 +1,83 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Quasar App
+  <q-layout view="hHh LpR fFf">
+    <!-- Header -->
+    <q-header elevated class="bg-primary text-white">
+      <q-toolbar class="q-px-md">
+        <q-avatar size="40px" class="q-mr-sm">
+          <q-icon name="school" size="md" />
+        </q-avatar>
+        
+        <q-toolbar-title class="text-h5 text-weight-bold">
+          DuoKids
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        
+        <q-space />
+        
+        <!-- Score display -->
+        <div class="text-subtitle1 q-mr-md">
+          <q-icon name="stars" class="q-mr-xs" />
+          {{ store.score }} pts
+        </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
+    <!-- Main content -->
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <!-- Bottom Navigation -->
+    <q-footer class="bg-white text-grey-8 shadow-up-3">
+      <q-tabs
+        v-model="activeTab"
+        class="text-grey-6"
+        active-color="primary"
+        indicator-color="primary"
+        align="justify"
+      >
+        <q-tab 
+          name="home" 
+          icon="home" 
+          label="Aprender"
+          @click="$router.push('/')"
+        />
+        <q-tab 
+          name="profile" 
+          icon="person" 
+          label="Perfil"
+          @click="$router.push('/profile')"
+        />
+        <q-tab 
+          name="settings" 
+          icon="settings" 
+          label="Ajustes"
+          disable
+        />
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { store } from 'src/store.js'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+const router = useRouter()
+const activeTab = ref('home')
+
+// Watch route changes to update active tab
+watch(() => router.currentRoute.value.path, (newPath) => {
+  if (newPath === '/') {
+    activeTab.value = 'home'
+  } else if (newPath === '/profile') {
+    activeTab.value = 'profile'
   }
-]
-
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
+}, { immediate: true })
 </script>
+
+<style scoped>
+.shadow-up-3 {
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+</style>
