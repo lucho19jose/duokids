@@ -2,12 +2,12 @@
   <q-layout view="hHh LpR fFf">
     <!-- Header -->
     <q-header elevated class="bg-primary text-white">
-      <q-toolbar class="q-px-md">
-        <q-avatar size="40px" class="q-mr-sm">
+      <q-toolbar class="q-px-md" >
+        <q-avatar size="40px" class="q-mr-sm pointer" @click="$router.push('/')">
           <q-icon name="school" size="md" />
         </q-avatar>
-        
-        <q-toolbar-title class="text-h5 text-weight-bold">
+
+        <q-toolbar-title class="text-h5 text-weight-bold pointer" @click="$router.push('/')">
           DuoKids
         </q-toolbar-title>
         
@@ -79,5 +79,9 @@ watch(() => router.currentRoute.value.path, (newPath) => {
 <style scoped>
 .shadow-up-3 {
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>

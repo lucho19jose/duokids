@@ -27,7 +27,7 @@
 
       <!-- Stats Cards -->
       <div class="stats-section q-mb-xl">
-        <div class="row q-gutter-md">
+        <div class="row q-gutter-md justify-center">
           <!-- Total Points -->
           <div class="col-12 col-sm-6">
             <q-card class="stat-card points-card">
@@ -98,7 +98,7 @@
           Logros Obtenidos
         </h5>
         
-        <div class="row q-gutter-md">
+        <div class="row q-gutter-md justify-center">
           <div 
             v-for="achievement in achievements" 
             :key="achievement.id"

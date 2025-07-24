@@ -1,7 +1,7 @@
 <template>
   <div class="quiz-question">
     <!-- Question Image (if available) -->
-    <div v-if="quizData.image" class="question-image q-mb-lg">
+    <div v-if="quizData.image" class="question-image q-mb-lg text-center">
       <q-img
         :src="quizData.image"
         :ratio="16/9"

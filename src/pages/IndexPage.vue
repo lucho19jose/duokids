@@ -18,11 +18,11 @@
 
       <!-- Lessons Grid -->
       <div class="lessons-section">
-        <h5 class="text-h6 text-weight-bold text-grey-8 q-mb-md">
+        <h5 class="text-h6 text-weight-bold text-grey-8 q-mb-md text-center">
           Lecciones Disponibles
         </h5>
         
-        <div class="row q-gutter-md">
+        <div class="row q-gutter-md justify-center">
           <div 
             v-for="lesson in store.lessons" 
             :key="lesson.id"

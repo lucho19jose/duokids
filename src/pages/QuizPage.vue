@@ -20,44 +20,46 @@
       </div>
 
       <!-- Feedback Section -->
-      <div 
-        v-if="store.showFeedback" 
-        class="feedback-section"
-        :class="store.isAnswerCorrect ? 'feedback-correct' : 'feedback-incorrect'"
-      >
-        <div class="feedback-content q-pa-lg">
-          <div class="row items-center justify-between">
-            <div class="feedback-text">
-              <div class="feedback-title text-h6 text-weight-bold">
-                {{ store.isAnswerCorrect ? '¡Correcto!' : '¡Oops!' }}
+      <Transition name="slide-up" appear>
+        <div 
+          v-if="store.showFeedback" 
+          class="feedback-section"
+          :class="store.isAnswerCorrect ? 'feedback-correct' : 'feedback-incorrect'"
+        >
+          <div class="feedback-content q-pa-lg">
+            <div class="row items-center justify-between">
+              <div class="feedback-text">
+                <div class="feedback-title text-h6 text-weight-bold">
+                  {{ store.isAnswerCorrect ? '¡Correcto!' : '¡Oops!' }}
+                </div>
+                <div class="feedback-message text-body1">
+                  {{ currentQuiz.feedback }}
+                </div>
               </div>
-              <div class="feedback-message text-body1">
-                {{ currentQuiz.feedback }}
+              
+              <div class="feedback-icon">
+                <q-icon 
+                  :name="store.isAnswerCorrect ? 'check_circle' : 'cancel'"
+                  size="40px"
+                  :color="store.isAnswerCorrect ? 'white' : 'white'"
+                />
               </div>
             </div>
             
-            <div class="feedback-icon">
-              <q-icon 
-                :name="store.isAnswerCorrect ? 'check_circle' : 'cancel'"
-                size="40px"
-                :color="store.isAnswerCorrect ? 'white' : 'white'"
+            <div class="feedback-actions q-mt-md">
+              <q-btn
+                :label="store.isLastQuestion() ? 'Completar Lección' : 'Continuar'"
+                color="white"
+                :text-color="store.isAnswerCorrect ? 'green' : 'red'"
+                size="lg"
+                class="full-width continue-button"
+                no-caps
+                @click="handleContinue"
               />
             </div>
           </div>
-          
-          <div class="feedback-actions q-mt-md">
-            <q-btn
-              :label="store.isLastQuestion() ? 'Completar Lección' : 'Continuar'"
-              color="white"
-              :text-color="store.isAnswerCorrect ? 'green' : 'red'"
-              size="lg"
-              class="full-width continue-button"
-              no-caps
-              @click="handleContinue"
-            />
-          </div>
         </div>
-      </div>
+      </Transition>
     </div>
   </q-page>
 </template>
@@ -138,8 +140,8 @@ function handleContinue() {
   left: 0;
   right: 0;
   z-index: 1000;
-  transform: translateY(100%);
-  animation: slideUp 0.3s ease forwards;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
 .feedback-correct {
@@ -154,6 +156,12 @@ function handleContinue() {
 
 .feedback-content {
   padding: 1.5rem;
+  padding-bottom: 5rem;
+}
+
+.feedback-actions {
+  margin-top: 1rem;
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 .feedback-title {
@@ -172,9 +180,11 @@ function handleContinue() {
 .continue-button {
   border-radius: 12px;
   font-weight: 600;
-  padding: 12px 24px;
+  padding: 16px 24px;
   border: 2px solid white;
   transition: all 0.2s ease;
+  min-height: 48px;
+  font-size: 18px;
 }
 
 .continue-button:hover {
@@ -188,10 +198,28 @@ function handleContinue() {
 @keyframes slideUp {
   from {
     transform: translateY(100%);
+    opacity: 0;
   }
   to {
     transform: translateY(0);
+    opacity: 1;
   }
+}
+
+/* Vue transition classes */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-up-enter-from {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.slide-up-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
 }
 
 @media (max-width: 600px) {
@@ -201,11 +229,17 @@ function handleContinue() {
   
   .feedback-content {
     padding: 1rem;
+    padding-bottom: 5rem;
   }
   
   .feedback-text {
     flex: 1;
     margin-right: 1rem;
+  }
+  
+  .continue-button {
+    padding: 14px 20px;
+    font-size: 16px;
   }
 }
 </style>
